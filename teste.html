@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>formularioo de cadastro</title>
+</head>
+<body>
+    <div class="content">
+        <h1>Informações de Pesquisa</h1>
+        <form>
+            <div>
+                <legend><h2>Informações Pessoais</h2></legend> <!--SUBTITULO-->
+                <label for="name">Nome*:</label> 
+                <input type="text" name="name" placeholder="Digite seu Nome" class="inputs required" oninput="nameValidate()">
+                <span class="span-required">Nome deve ter no minimo 3 caracteres</span>
+            </div>
+            <div>
+                <label for="sobrenome">Sobrenome*: </label>
+                <input type="text" name="sobrenome"  placeholder="digite aqui..." class="inputs required" oninput="sobrenomeValidate()">
+                <span class="span-required">sobrenome deve ter no minimo 3 caracteres</span>
+            </div>
+            <div>
+                <label for="idade">Idade*:</label>
+                <input type="number" min="0" max="120" name="idade"  placeholder="digite aqui..." class="inputs required" oninput="idadeValidate()">
+                <span class="span-required">Vcoê deve ter no mínimo 18 anos para preencher</span>
+            </div>
+            <div>
+                <label for="data_nascimento">Data de Nascimento*: </label>
+                <input type="date" name="data_nascimento" class="inputs required" oninput="data_NascimentoValidate()"> 
+                <span class="span-required">sua data de nascimento deve ser preenchida</span>
+            </div>
+            <div>
+                <label for="email">Email*:</label> 
+                <input type="email" name="email"  placeholder="digite aqui..." class="inputs required">
+                <span class="span-required">digite uma email válido</span>
+            </div>
+            <div>
+                <label for="endereco">Endereço:</label> 
+                <input type="text" name="endereco" placeholder="digite aqui..." class="inputs required">
+                <span class="span-required">seu endereço deve ser preenchido</span>
+            </div>
+            <div>
+                <label for="cidade">Cidade: </label>
+                <input type="text" name="cidade" placeholder="digite aqui..." class="inputs required">
+                <span class="span-required">sua cidade deve ser preenchida</span>
+            </div>
+            <div>
+                <label for="telefone">Telefone: </label>
+                <input type="text" name="telefone" placeholder="digite aqui..." class="inputs required">
+                <span class="span-required">seu telefone deve ser preenchido</span>
+            </div>
+            <label>Menssagem:</label>
+            <textarea class="inputs" name="descricao" id="descricao" cols="30" rows="10" placeholder="Fale um poouco sobre você..."></textarea>
+            <p>sexo:</p>
+            <div class="box-select">
+                <div>
+                    <input type="radio" id="m" value="m" name="sexo">
+                    <label for="m">Masculino</label>
+                </div><div>
+                    <input type="radio" id="f" value="f" name="sexo">
+                    <label for="f">Feminino</label>
+                </div><div>
+                    <input type="radio" id="o" value="o" name="sexo">
+                    <label for="o">Outro</label>
+                </div>
+            </div>
+            <p>Quais suas experiências?</p>
+            <div class="box-select">
+                <div>
+                    <input type="checkbox" id="html" value="html" name="experiencias">
+                    <label for="html">Html</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="css" value="css" name="experiencias">
+                    <label for="css">Css</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="js" value="js" name="experiencias">
+                    <label for="js">JavaScript</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="php" value="php" name="experiencias">
+                    <label for="php">Php</label>
+                </div>
+            </div>
+            <button type="submit">ENVIAR</button>
+        </form>
+    </div>
+</body>
+
+
+<script> 
+    // importar todas as ações que serão usadas
+    const form = document.getElementById('form')
+    const campos = document.querySelectorAll('.required')
+    const spans = document.querySelectorAll('.span-required')
+    const emailRegex = /^((?!\.)[\w-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/gim;
+
+    function setError(index){ // (setError) chamar o erro caso seja false
+        campos[index].style.border = '2px solid #e63636';
+        spans[index].style.display = 'block';
+    }
+
+    function removeError(index){ // (removeError) remover o erro caso seja true
+        campos[index].style.border ='';
+        spans[index].style.display = 'none';
+    }
+
+    function nameValidate(){ //validar o nome
+        if(campos[0].value.length <3)
+        {
+            setError(0)
+        }
+        else
+        {
+            removeError(0)
+        }
+    }
+
+    function sobrenomeValidate(){
+        if(campos[1].value.length <3) // (length) verificar o comprimentos de caracteres no valor
+        {
+            setError(1)
+        }
+        else
+        {
+            removeError(1)
+        }
+    }
+
+    function idadeValidate(){
+        const idade = parseInt(campos[2].value, 10); // parseInt(..., 10) converte a string em número inteiro.
+
+        if(isNaN(idade) || idade <18) //isNaN(idade) verifica se o valor inserido não é um número válido.
+        {
+            setError(2)
+        }
+        else
+        {
+            removeError(2)
+        }
+
+        // Limita manualmente a idade no input
+        if (idade < 0) {
+            campos[2].value = 0;
+            setError(2);
+        } else if (idade > 120) {
+            campos[2].value = 120;
+            setError(2);
+        } else if (idade < 18) {
+            setError(2);
+        } else {
+            removeError(2);
+        }
+    }
+</script>
+</html>
+
+
+    
+   
+  
+
+
+
+

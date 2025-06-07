@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Roboto Mono", monospace;
+    background: linear-gradient(#2f4f4f,#000000 );
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150vh;
+}
+
+.content {
+    background-color:#0c0b0c;
+    padding: 2rem;
+    border-radius: 10px;
+    min-width: 30%;
+    overflow: auto;
+}
+
+h1 {
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.content h2 {
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.content form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.span-required {
+    font-size: 12px;
+    margin: 3px 0 0 1px;
+    color: red;
+    display: none; /* sumir com os spans*/
+}
+
+.inputs {
+    padding: 8px 5px; /* autura pra cima e pra baixo*/
+    outline: none; /*retirar bordar ao redor do input*/
+    border-radius: 5px;
+    background-color: #213131;
+    border: 2px solid #213131;
+    color: white;
+    width: 100%;
+    box-sizing: border-box; /*ocupa 100% dos espaços alem do width os outros que estao acima*/
+    transition: .3s;
+}
+
+.inputs:focus {
+    border-color:#27158a;
+}
+
+.box-select {
+    display: flex;
+    justify-content: space-evenly;
+    font-weight: bold;
+    gap: 1rem
+}
+
+button[type="submit"] {
+    padding: 1rem;
+    font-size: 1rem;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    margin-top: 1rem;
+    background-color: #27158a;
+    color: white;
+    cursor: pointer;
+    transition: .3s;
+}
+
+button[type="submit"]:hover {/*muda de cor ao passar o mause encima*/
+    background-color:#100457 
+}
+
+@media screen and (max-width: 576px) {
+    .box-select {
+        flex-direction: column;
+        gap: 5px;
+    }
+}
+
+.erro {
+    border: 2px solid #e63636
+}
